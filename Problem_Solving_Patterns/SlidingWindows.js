@@ -1,4 +1,4 @@
-//Sliding Window is this pattern involves creating a window shich can either be an 
+//Sliding Window is this pattern involves creating a window shich can either be an array or number from one position to another.
 
 function maxSubarraySum(arr, num) {
     let maxSum = 0;
