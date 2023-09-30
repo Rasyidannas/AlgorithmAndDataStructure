@@ -1,6 +1,6 @@
 //Recrusion is a process(a function in our case) that calls itself until base case(the condition when the recrusion ends)
 
-function coutnDown(num) {
+function countDown(num) {
     //this is base case
     if(num <= 0) {
         console.log("All done!");
@@ -10,7 +10,7 @@ function coutnDown(num) {
     console.log(num);
     num--;
     //this is a recrusions
-    coutnDown(num);
+    countDown(num);
 }
 
-coutnDown(5);
+countDown(5);
