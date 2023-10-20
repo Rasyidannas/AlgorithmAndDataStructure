@@ -19,3 +19,4 @@ function search(array, val) {
 }
 
 console.log(search([1, 4, 3, 8, 9, 11, 14, 19], 8));
+console.log(search([1, 2, 3, 4, 5, 6], 4));
