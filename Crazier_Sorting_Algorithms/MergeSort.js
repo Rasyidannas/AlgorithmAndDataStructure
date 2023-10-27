@@ -24,11 +24,27 @@ function merge(arr1, arr2) {
 
   //   this is for rest element in arr2
   while (j < arr2.length) {
-    results.push(arr1[j]);
+    results.push(arr2[j]);
     j++;
   }
 
   return results;
 }
 
-console.log(merge([4, 5, 9], [1, 3]));
+console.log(merge([4, 5, 2], [1, 3, 9]));
+console.log(merge([4, 5], [1, 3, 9]));
+
+//this is real MergeSort but need merge function
+function mergeSort(arr) {
+  // this is base case
+  if (arr.length <= 1) return arr;
+
+  let mid = Math.floor(arr.length / 2);
+  //this is using recrusive
+  let left = mergeSort(arr.slice(0, mid));
+  let right = mergeSort(arr.slice(mid));
+
+  return merge(left, right);
+}
+
+console.log(mergeSort([10, 24, 76, 73, 72, 1, 9]));
