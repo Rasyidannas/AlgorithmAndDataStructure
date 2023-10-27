@@ -1,6 +1,6 @@
 // Merge Sort is a combination of two things merging and sorting.
 
-//Example for merging arrys implementation
+//Example for merging arrays implementation
 function merge(arr1, arr2) {
   let results = [];
   let i = 0;
