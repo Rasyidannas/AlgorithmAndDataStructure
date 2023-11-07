@@ -1,6 +1,6 @@
 // Qucik sort is selecting one element (pivot) and finding the index where the pivot should end up in the sorted array. Once the pivot is positioned appropriately, quick sort can be applied on etiher side of the pivot.
 
-// this is for pivot
+// this is for pivot (manage and sort element array)
 function pivot(arr, start = 0, end = arr.length - 1) {
   //this is for change or switch position array element
   function swap(array, i, j) {
