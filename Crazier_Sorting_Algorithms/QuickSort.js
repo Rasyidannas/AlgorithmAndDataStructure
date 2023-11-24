@@ -26,7 +26,7 @@ function pivot(arr, start = 0, end = arr.length - 1) {
 
 //this is resal Quick Sort
 function quickSort(arr, left = 0, right = arr.length - 1) {
-  //base case
+  //base case this because left and right always changing in recrusive
   if (left < right) {
     //this will call pivot function in above
     let pivotIndex = pivot(arr, left, right); //output 3
