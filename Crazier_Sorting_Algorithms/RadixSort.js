@@ -14,14 +14,35 @@ function digitCount(num) {
 
 //this is function for get most/max/highest digit
 function mostDigits(nums) {
-   let maxDigits = 0;
-   for (let i = 0; i < nums.length; i++) {
-      maxDigits = Math.max(maxDigits, digitCount(nums[i]));
-   }
+  let maxDigits = 0;
+  for (let i = 0; i < nums.length; i++) {
+    maxDigits = Math.max(maxDigits, digitCount(nums[i]));
+  }
 
-   return maxDigits;
+  return maxDigits;
 }
 
-// console.log(getDigit(1234, 1))
-console.log(digitCount(21388));
-console.log(mostDigits([21388, 19, 234, 912, 12]));
+//this is real Radix sort and need function above (helper function)
+function radixSort(nums) {
+  let maxDigitsCount = mostDigits(nums);
+  for (let k = 0; k < maxDigitsCount; k++) {
+    //this will create 10 array nested array
+    let digitBuckets = Array.from({ length: 10 }, () => []);
+
+    //this loop nums array and get one element
+    for (let i = 0; i < nums.length; i++) {
+      //this will store in digitBucket index
+      let digit = getDigit(nums[i], k);
+      digitBuckets[digit].push(nums[i]);
+    }
+    // console.log(digitBuckets);
+
+    //this is for reassign new nums ([]) and merge with concat()
+    nums = [].concat(...digitBuckets);
+    // console.log(nums);
+  }
+
+  return nums;
+}
+
+console.log(radixSort([23, 345, 5476, 12, 2345, 9852]));
