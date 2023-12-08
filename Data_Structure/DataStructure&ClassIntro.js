@@ -31,6 +31,11 @@ class Student {
     const sum = this.scores.reduce((a, b) => a + b);
     return sum / this.scores.length;
   }
+
+  // this is static methods(it should call without Instantiate)
+  static enrollStudents() {
+    return "ENROLLING STUDENTS!";
+  }
 }
 
 //this is instantiate
@@ -43,3 +48,5 @@ console.log(student1.markLate()); //this is for call methods
 console.log(student1.addScore(12)); //this is for call methods
 console.log(student1.addScore(12)); //this is for call methods
 console.log(student1.calculateAverage()); //this is for call methods
+
+console.log(Student.enrollStudents()); //this is for call static methods
