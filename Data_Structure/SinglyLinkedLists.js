@@ -16,7 +16,7 @@ class SinglyLinkedList {
     this.length = 0;
   }
 
-  //this is method for new node to the end of the Linked List
+  //this is method for adding new node to the end of the Linked List
   push(val) {
     var newNode = new Node(val);
     if (!this.head) {
@@ -30,6 +30,14 @@ class SinglyLinkedList {
     }
     this.length++;
     return this;
+  }
+
+  traverse() {
+    var current = this.head;
+    while (current) {
+      console.log(current.val);
+      current = current.next;
+    }
   }
 }
 
@@ -46,3 +54,4 @@ list.push("World");
 list.push("Goodbye");
 
 console.log(list);
+console.log(list.traverse());
