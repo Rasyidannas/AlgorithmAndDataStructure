@@ -25,19 +25,37 @@ class SinglyLinkedList {
       this.tail = this.head;
     } else {
       //this for if linked list not empty
-      this.tail.next = newNode;
-      this.tail = newNode;
+      this.tail.next = newNode; //this is for add new node
+      this.tail = newNode; //this is for reassign/redclare tail properti
     }
     this.length++;
     return this;
   }
 
-  traverse() {
+  //removing node from end of the Linked List
+  pop() {
+    //this is for no node or empty and try to pop()
+    if (!this.head) return undefined;
+
     var current = this.head;
-    while (current) {
-      console.log(current.val);
+    var newTail = current;
+
+    while (current.next) {
+      newTail = current;
       current = current.next;
     }
+
+    this.tail = newTail;
+    this.tail.next = null; //this is for remove end node
+    this.length--;
+
+    //this is for if empty and set head and tail properties to be null
+    if (this.length === 0) {
+      this.head = null;
+      this.tail = null;
+    }
+
+    return current; //this is a node removed
   }
 }
 
@@ -53,5 +71,8 @@ list.push("Hello");
 list.push("World");
 list.push("Goodbye");
 
+console.log(list.pop());
+console.log(list.pop());
+console.log(list.pop());
+
 console.log(list);
-console.log(list.traverse());
