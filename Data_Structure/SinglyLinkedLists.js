@@ -17,7 +17,20 @@ class SinglyLinkedList {
   }
 
   //this is method for new node to the end of the Linked List
-  push() {}
+  push(val) {
+    var newNode = new Node(val);
+    if (!this.head) {
+      // this is for if linked list empty
+      this.head = newNode;
+      this.tail = this.head;
+    } else {
+      //this for if linked list not empty
+      this.tail.next = newNode;
+      this.tail = newNode;
+    }
+    this.length++;
+    return this;
+  }
 }
 
 //instantiate class and assign next node
@@ -29,5 +42,7 @@ class SinglyLinkedList {
 
 var list = new SinglyLinkedList();
 list.push("Hello");
+list.push("World");
+list.push("Goodbye");
 
-console.log(first);
+console.log(list);
