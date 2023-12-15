@@ -40,6 +40,7 @@ class SinglyLinkedList {
     var current = this.head;
     var newTail = current;
 
+    //this will loop to the next untul next null
     while (current.next) {
       newTail = current;
       current = current.next;
@@ -57,6 +58,23 @@ class SinglyLinkedList {
 
     return current; //this is a node removed
   }
+
+  //removing  from begining of the Linked List
+  shift() {
+    if (!this.head) return undefined;
+
+    var currentHead = this.head; //this for store value this.head
+    this.head = currentHead.next; //this will be reassign this.head but currentHead still has old value
+    this.length--;
+
+    //this is for if empty and set head and tail properties to be null
+    if (this.length === 0) {
+      this.head = null;
+      this.tail = null;
+    }
+
+    return currentHead;
+  }
 }
 
 //instantiate class and assign next node
@@ -71,8 +89,10 @@ list.push("Hello");
 list.push("World");
 list.push("Goodbye");
 
-console.log(list.pop());
-console.log(list.pop());
-console.log(list.pop());
+// console.log(list.pop());
+// console.log(list.pop());
+// console.log(list.pop());
+
+console.log(list.shift());
 
 console.log(list);
