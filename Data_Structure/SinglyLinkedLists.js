@@ -59,7 +59,7 @@ class SinglyLinkedList {
     return current; //this is a node removed
   }
 
-  //removing  from begining of the Linked List
+  //removing node from begining of the Linked List
   shift() {
     if (!this.head) return undefined;
 
@@ -74,6 +74,23 @@ class SinglyLinkedList {
     }
 
     return currentHead;
+  }
+
+  //adding new node from begining of the Linked List
+  unshift(val) {
+    var newNode = new Node(val);
+    //this is for empty
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = this.head;
+    } else {
+      newNode.next = this.head; //this add current head property be next property for newNode
+      this.head = newNode; //reassign head property
+    }
+
+    this.length++;
+
+    return this;
   }
 }
 
@@ -94,5 +111,6 @@ list.push("Goodbye");
 // console.log(list.pop());
 
 console.log(list.shift());
+console.log(list.unshift("Test"));
 
 console.log(list);
