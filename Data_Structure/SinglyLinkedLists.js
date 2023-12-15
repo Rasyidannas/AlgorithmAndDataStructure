@@ -107,6 +107,20 @@ class SinglyLinkedList {
 
     return current;
   }
+
+  //changing the calue of a node based on it's position in the Linked list
+  set(index, val) {
+    //this using get method in above
+    var foundNode = this.get(index);
+
+    //this if index found
+    if (foundNode) {
+      foundNode.val = val;
+      return true;
+    }
+
+    return false;
+  }
 }
 
 //instantiate class and assign next node
@@ -127,6 +141,7 @@ list.push("Goodbye");
 
 // console.log(list.shift());
 // console.log(list.unshift("Test"));
-console.log(list.get(1));
+// console.log(list.get(1));
+console.log(list.set(0, "Hai"));
 
 console.log(list);
