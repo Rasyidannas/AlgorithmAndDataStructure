@@ -151,6 +151,40 @@ class SinglyLinkedList {
     this.length--;
     return removed;
   }
+
+  //Reversing the Linked List in place
+  reverse() {
+    //this is for swap head to tail and tail to head
+    var node = this.head;
+    this.head = this.tail;
+    this.tail = node;
+
+    var next;
+    var prev = null;
+
+    //this will loop and set element reverse
+    for (var i = 0; i < this.length; i++) {
+      next = node.next;
+      node.next = prev;
+      prev = node;
+      node = next;
+    }
+
+    return this;
+  }
+
+  //Print the Linked List in array
+  print() {
+    var arr = [];
+    var current = this.head;
+
+    while (current) {
+      arr.push(current.val);
+      current = current.next;
+    }
+
+    console.log(arr);
+  }
 }
 
 //instantiate class and assign next node
@@ -179,7 +213,9 @@ list.push("Goodbye");
 // console.log(list.insert(-1, "Test Insert"));
 // console.log(list.insert(100, "Test Insert"));
 
-console.log(list.remove(1));
-console.log(list.remove(1));
+// console.log(list.remove(1));
+// console.log(list.remove(1));
 
-console.log(list);
+// console.log(list);
+list.reverse();
+list.print();
