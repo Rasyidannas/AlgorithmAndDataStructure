@@ -121,6 +121,22 @@ class SinglyLinkedList {
 
     return false;
   }
+
+  //Adding a node to the Linked List at a specific position
+  insert(index, val) {
+    if (index < 0 || index > this.length) return false;
+    if (index === this.length) return !!this.push(val); //this use push because add in end position in Linked List and !! it will be converting value boolean (true or false)
+    if (index === 0) return !!this.unshift(val); //this use unshift becasue add in begining position in Linked List
+
+    var newNode = new Node(val);
+    var prev = this.get(index - 1);
+    var temp = prev.next; //this save prev.next in variable because it will be gone
+    prev.next = newNode;
+    newNode.next = temp;
+    this.length++;
+
+    return true;
+  }
 }
 
 //instantiate class and assign next node
@@ -143,5 +159,8 @@ list.push("Goodbye");
 // console.log(list.unshift("Test"));
 // console.log(list.get(1));
 console.log(list.set(0, "Hai"));
+console.log(list.insert(1, "Test Insert"));
+// console.log(list.insert(-1, "Test Insert"));
+// console.log(list.insert(100, "Test Insert"));
 
 console.log(list);
