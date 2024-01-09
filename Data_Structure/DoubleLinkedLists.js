@@ -78,18 +78,51 @@ class DoublyLinkdeList {
     } else {
       this.head.prev = newNode;
       newNode.next = this.head;
-      this.head = newNode; 
+      this.head = newNode;
     }
 
     this.length++;
     return this;
+  }
+
+  //getting is a accessing a node in a Doubly Linked List by it position
+  get(index) {
+    if (index < 0 || index === this.length) return null;
+
+    var count, current;
+
+    if (index <= this.length / 2) {
+      // console.log("Working From Start");
+      count = 0;
+      current = this.head;
+
+      while (count !== index) {
+        current = current.next;
+        count++;
+      }
+    } else {
+      //this will be reverse loping/start from end, so from tail
+      // console.log("Working From End");
+      count = this.length - 1;
+      current = this.tail;
+
+      while (count !== index) {
+        current = current.next;
+        count--;
+      }
+    }
+    return current;
   }
 }
 
 const list = new DoublyLinkdeList();
 list.push(99);
 list.push(100);
+list.push(70);
+list.push(50);
+list.push(200);
 // list.pop();
 // list.shift();
-list.unshift(150);
-console.log(list);
+// list.unshift(150);
+console.log(list.get(4));
+// console.log(list);
