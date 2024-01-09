@@ -67,11 +67,29 @@ class DoublyLinkdeList {
     this.length--;
     return oldHead;
   }
+
+  //unshifting is adding a node to the begining of the Doubly Linked List
+  unshift(val) {
+    var newNode = new Node(val);
+
+    if (this.length === 0) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      this.head.prev = newNode;
+      newNode.next = this.head;
+      this.head = newNode; 
+    }
+
+    this.length++;
+    return this;
+  }
 }
 
 const list = new DoublyLinkdeList();
 list.push(99);
 list.push(100);
 // list.pop();
-list.shift();
+// list.shift();
+list.unshift(150);
 console.log(list);
