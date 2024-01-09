@@ -48,11 +48,30 @@ class DoublyLinkdeList {
     this.length--;
     return poppedNode;
   }
+
+  //Shifting is a removing node from the beginning of the Doubly Linked List
+  shift() {
+    if (this.length === 0) return undefined;
+
+    var oldHead = this.head;
+
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      this.head = oldHead.next;
+      this.head.prev = null;
+      oldHead.next = null;
+    }
+
+    this.length--;
+    return oldHead;
+  }
 }
 
 const list = new DoublyLinkdeList();
 list.push(99);
 list.push(100);
-// list.push(50);
-list.pop();
+// list.pop();
+list.shift();
 console.log(list);
