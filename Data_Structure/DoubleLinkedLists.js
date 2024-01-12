@@ -87,7 +87,7 @@ class DoublyLinkdeList {
 
   //getting is a accessing a node in a Doubly Linked List by it position
   get(index) {
-    if (index < 0 || index === this.length) return null;
+    if (index < 0 || index >= this.length) return null;
 
     var count, current;
 
@@ -107,11 +107,22 @@ class DoublyLinkdeList {
       current = this.tail;
 
       while (count !== index) {
-        current = current.next;
+        current = current.prev;
         count--;
       }
     }
     return current;
+  }
+
+  //set is replacing the value of a node to the in a Doubly Linked List
+  set(index, val) {
+    var foundNode = this.get(index);
+    if (foundNode != null) {
+      foundNode.val = val;
+      return true;
+    }
+
+    return false;
   }
 }
 
@@ -124,5 +135,7 @@ list.push(200);
 // list.pop();
 // list.shift();
 // list.unshift(150);
-console.log(list.get(4));
-// console.log(list);
+// console.log(list.get(4));
+console.log(list.set(2, 30));
+console.log(list.set(10, 30));
+console.log(list.get(2));
