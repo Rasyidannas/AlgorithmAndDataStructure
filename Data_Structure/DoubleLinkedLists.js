@@ -129,21 +129,40 @@ class DoublyLinkdeList {
   insert(index, val) {
     if(index < 0 || index > this.length) return false;
 
-    if(index === 0) return this.unshift(val);
+    if(index === 0) return !!this.unshift(val);
 
-    if(index === this.length - 1) return this.push(val);
+    if(index === this.length) return !!this.push(val);
 
     var newNode = new Node(val);
     var beforeNode = this.get(index - 1);
     var afterNode = beforeNode.next;
 
-    beforeNode.next = newNode;
-    newNode.prev = beforeNode;
-    newNode.next = afterNode;
-    afterNode.prev = newNode;
+    beforeNode.next = newNode, newNode.prev = beforeNode;
+    newNode.next = afterNode, afterNode.prev = newNode;
 
     this.length++;
     return true;
+  }
+
+  //remove is removing a node in a Doubly Linked List by a certain position
+  remove(index) {
+    if(index < 0 || index >= this.length) return undefined;
+
+    if(index === 0) return this.shift();
+
+    if(index === this.length - 1) return this.pop();
+
+    var removedNode = this.get(index);
+    var beforeNode = removedNode.prev;
+    var afterNode = removedNode.next;
+
+    beforeNode.next = afterNode;
+    afterNode.prev = beforeNode;
+    removedNode.next = null;
+    removedNode.prev = null;
+
+    this.length--;
+    return removedNode;
   }
 }
 
@@ -159,5 +178,6 @@ list.push(200);
 // console.log(list.get(4));
 // console.log(list.set(2, 30));
 // console.log(list.set(10, 30));
-console.log(list.insert(1, 30));
-console.log(list.get(1));
+// console.log(list.insert(5, 30));
+console.log(list.remove(1));
+console.log(list);
