@@ -124,6 +124,27 @@ class DoublyLinkdeList {
 
     return false;
   }
+
+  //insert is adding a node in a Dobly Linked List by a certian position
+  insert(index, val) {
+    if(index < 0 || index > this.length) return false;
+
+    if(index === 0) return this.unshift(val);
+
+    if(index === this.length - 1) return this.push(val);
+
+    var newNode = new Node(val);
+    var beforeNode = this.get(index - 1);
+    var afterNode = beforeNode.next;
+
+    beforeNode.next = newNode;
+    newNode.prev = beforeNode;
+    newNode.next = afterNode;
+    afterNode.prev = newNode;
+
+    this.length++;
+    return true;
+  }
 }
 
 const list = new DoublyLinkdeList();
@@ -136,6 +157,7 @@ list.push(200);
 // list.shift();
 // list.unshift(150);
 // console.log(list.get(4));
-console.log(list.set(2, 30));
-console.log(list.set(10, 30));
-console.log(list.get(2));
+// console.log(list.set(2, 30));
+// console.log(list.set(10, 30));
+console.log(list.insert(1, 30));
+console.log(list.get(1));
