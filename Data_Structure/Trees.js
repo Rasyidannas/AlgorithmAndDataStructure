@@ -20,11 +20,49 @@ class BinarySearchTree {
   constructor() {
     this.root = null;
   }
+
+  //Inserting is adding node
+  insert(value) {
+    var newNode = new Node(value);
+    if (this.root === null) {
+      this.root = newNode;
+      return this;
+    }
+    //for root not null
+    var current = this.root;
+    while (true) {
+      //this is for same value
+      if (value === current.value) return undefined;
+      if (value < current.value) {
+        //this is for left
+        if (current.left === null) {
+          current.left = newNode;
+          return this;
+        } else {
+          current = current.left;
+        }
+      } else if (value > current.value) {
+        //this is for right
+        if (current.right === null) {
+          current.right = newNode;
+          return this;
+        } else {
+          current = current.right;
+        }
+      }
+    }
+  }
 }
 
 var tree = new BinarySearchTree();
-tree.root = new Node(10);
-tree.root.right = new Node(15);
-tree.root.left = new Node(7);
-tree.root.right.left = new Node(9);
+tree.insert(10);
+tree.insert(5);
+tree.insert(13);
+tree.insert(11);
+tree.insert(2);
+tree.insert(16);
+tree.insert(7);
 console.log(tree);
+console.log(tree.root.right);
+console.log(tree.root.left);
+console.log(tree.insert(10));
