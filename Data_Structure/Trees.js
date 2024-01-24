@@ -30,6 +30,7 @@ class BinarySearchTree {
     }
     //for root not null
     var current = this.root;
+    //this is make recursively or iteratively
     while (true) {
       //this is for same value
       if (value === current.value) return undefined;
@@ -52,6 +53,29 @@ class BinarySearchTree {
       }
     }
   }
+
+  //Finding is seach or find a node
+  find(value) {
+    if (this.root === null) return false;
+    var current = this.root;
+    var found = false;
+
+    //this will recursively or iteratively
+    while (current && !found) {
+      if (value < current.value) {
+        current = current.left;
+      } else if (value > current.value) {
+        current = current.right;
+      } else {
+        found = true;
+      }
+    }
+
+    //this is for value not found
+    if (!found) return undefined;
+
+    return current;
+  }
 }
 
 var tree = new BinarySearchTree();
@@ -62,7 +86,7 @@ tree.insert(11);
 tree.insert(2);
 tree.insert(16);
 tree.insert(7);
-console.log(tree);
-console.log(tree.root.right);
-console.log(tree.root.left);
-console.log(tree.insert(10));
+// console.log(tree);
+// console.log(tree.root.right);
+// console.log(tree.root.left);
+console.log(tree.find(20));
