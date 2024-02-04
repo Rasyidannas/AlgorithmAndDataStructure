@@ -121,6 +121,26 @@ class BinarySearchTree {
     traverse(current);
     return data;
   }
+
+  //Depth First In Order is traverse all node by smallest to highest
+  traverseDepthFirstSearchInOrder() {
+    var data = [];
+
+    var current = this.root;
+
+    function traverse(node) {
+      //this will recursively
+      if (node.left) traverse(node.left);
+
+      data.push(node.value);
+
+      //this will recursively
+      if (node.right) traverse(node.right);
+    }
+
+    traverse(current);
+    return data;
+  }
 }
 
 var tree = new BinarySearchTree();
@@ -138,3 +158,4 @@ tree.insert(20);
 console.log(tree.traverseBreadthFirstSearch()); //[10, 6, 15, 3, 8, 20]
 console.log(tree.travereDepthFirstSearchPreOrder()); //[10, 6, 3, 8, 15, 20]
 console.log(tree.traverseDepthFirstSearchPostOrder()); //[3, 8, 6, 20, 15, 10]
+console.log(tree.traverseDepthFirstSearchInOrder()); //[3, 6, 8, 10, 15, 20]
