@@ -87,6 +87,23 @@ class BinarySearchTree {
 
     return data;
   }
+
+  //Depth First PreOrder is traverse on left subtree until leaf and then to right subtree
+  travereDepthFirstSearchPreOrder() {
+    var data = [];
+    var current = this.root;
+
+    function traverse(node) {
+      data.push(node.value);
+
+      //this will recursively
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+    }
+
+    traverse(current);
+    return data;
+  }
 }
 
 var tree = new BinarySearchTree();
@@ -97,6 +114,9 @@ tree.insert(3);
 tree.insert(8);
 tree.insert(20);
 // console.log(tree);
-// console.log(tree.root.right);
-// console.log(tree.root.left);
-console.log(tree.traverseBreadthFirstSearch());
+// This is visual of above tree
+//   10
+// 6   15
+//3 8    20
+console.log(tree.traverseBreadthFirstSearch()); //[10, 6, 15, 3, 8, 20]
+console.log(tree.travereDepthFirstSearchPreOrder()); //[10, 6, 3, 8, 15, 20]
