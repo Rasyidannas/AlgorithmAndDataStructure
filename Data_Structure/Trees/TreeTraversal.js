@@ -104,6 +104,23 @@ class BinarySearchTree {
     traverse(current);
     return data;
   }
+
+  //Depth First Post Order is traverse on left leaftree and then to right until root
+  traverseDepthFirstSearchPostOrder() {
+    var data = [];
+    var current = this.root;
+
+    function traverse(node) {
+      //this will recursively
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+
+      data.push(node.value);
+    }
+
+    traverse(current);
+    return data;
+  }
 }
 
 var tree = new BinarySearchTree();
@@ -120,3 +137,4 @@ tree.insert(20);
 //3 8    20
 console.log(tree.traverseBreadthFirstSearch()); //[10, 6, 15, 3, 8, 20]
 console.log(tree.travereDepthFirstSearchPreOrder()); //[10, 6, 3, 8, 15, 20]
+console.log(tree.traverseDepthFirstSearchPostOrder()); //[3, 8, 6, 20, 15, 10]
