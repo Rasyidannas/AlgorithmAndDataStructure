@@ -20,7 +20,7 @@ class HashTable {
     return total;
   }
 
-  //addding value to array
+  //addding key and value to one array
   set(key, value) {
     let index = this._hash(key);
     //this for if index in array empty/didn't fill this will make empty array or wrapper in array
@@ -32,28 +32,70 @@ class HashTable {
     this.keyMap[index].push([key, value]);
   }
 
-  //print value in array
+  //print key and value in array
   get(key) {
     let index = this._hash(key);
     if (this.keyMap[index]) {
       for (let i = 0; i < this.keyMap[index].length; i++) {
         //this for check key in array nested same like key in argument
         if (this.keyMap[index][i][0] === key) {
-          return this.keyMap[index][i][1];
+          return this.keyMap[index][i];
         }
       }
     }
 
     return undefined;
   }
+
+  //print all values
+  values() {
+    let valuesArr = [];
+    for (let i = 0; i < this.keyMap.length; i++) {
+      //sheck only filled array
+      if (this.keyMap[i]) {
+        for (let j = 0; j < this.keyMap[i].length; j++) {
+          //check dupliacate or similar values
+          if (!valuesArr.includes(this.keyMap[i][j][1])) {
+            valuesArr.push(this.keyMap[i][j][1]);
+          }
+        }
+      }
+    }
+
+    return valuesArr;
+  }
+
+  //print all keys
+  keys() {
+    let keysArr = [];
+    for (let i = 0; i < this.keyMap.length; i++) {
+      //sheck only filled array
+      if (this.keyMap[i]) {
+        for (let j = 0; j < this.keyMap[i].length; j++) {
+          //check dupliacate or similar keys
+          if (!keysArr.includes(this.keyMap[i][j][0])) {
+            keysArr.push(this.keyMap[i][j][0]);
+          }
+        }
+      }
+    }
+
+    return keysArr;
+  }
 }
 
 let ht = new HashTable(17);
-console.log(ht.set("maroon", "#800000"));
-console.log(ht.set("yellow", "#FFFF00"));
-console.log(ht.set("olive", "#808000"));
-console.log(ht.set("salmon", "#FA8072"));
-console.log(ht.set("lightcoral", "#F08000"));
+ht.set("maroon", "#800000");
+ht.set("yellow", "#FFFF00");
+ht.set("olive", "#808000");
+ht.set("salmon", "#FA8072");
+ht.set("lightcoral", "#F08000");
+ht.set("plum", "#DDA0DD");
+ht.set("plum", "DOUBLE");
+ht.set("purple", "#DDA0DD");
+ht.set("violet", "#DDA0DD");
 console.log(ht);
-console.log(ht.get("maroon"));
-console.log(ht.get("salmon"));
+// console.log(ht.get("maroon"));
+// console.log(ht.get("salmon"));
+console.log(ht.values());
+console.log(ht.keys());
