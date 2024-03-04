@@ -2,7 +2,7 @@
 
 //hash function is convert keys into valid array indices
 class HashTable {
-  constructor(size = 4) {
+  constructor(size = 53) {
     this.keyMap = new Array(size);
   }
 
@@ -20,6 +20,7 @@ class HashTable {
     return total;
   }
 
+  //addding value to array
   set(key, value) {
     let index = this._hash(key);
     //this for if index in array empty/didn't fill this will make empty array or wrapper in array
@@ -30,10 +31,29 @@ class HashTable {
     //this for filled array and Separate chaining when index filled and then make this nested array
     this.keyMap[index].push([key, value]);
   }
+
+  //print value in array
+  get(key) {
+    let index = this._hash(key);
+    if (this.keyMap[index]) {
+      for (let i = 0; i < this.keyMap[index].length; i++) {
+        //this for check key in array nested same like key in argument
+        if (this.keyMap[index][i][0] === key) {
+          return this.keyMap[index][i][1];
+        }
+      }
+    }
+
+    return undefined;
+  }
 }
 
-let ht = new HashTable();
-console.log(ht.set("hello world", "goodbye!!"));
-console.log(ht.set("cats", "are fine"));
-console.log(ht.set("i love", "nasi goreng"));
+let ht = new HashTable(17);
+console.log(ht.set("maroon", "#800000"));
+console.log(ht.set("yellow", "#FFFF00"));
+console.log(ht.set("olive", "#808000"));
+console.log(ht.set("salmon", "#FA8072"));
+console.log(ht.set("lightcoral", "#F08000"));
 console.log(ht);
+console.log(ht.get("maroon"));
+console.log(ht.get("salmon"));
