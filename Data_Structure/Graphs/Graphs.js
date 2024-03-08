@@ -8,7 +8,6 @@
 // 2. Undericted Graphs is a undirected graphs the edges don’t have a specific direction (like a two-way street) and thus every two vertices that are connected together have access to each other.
 // 3. Weighted Graph is a graph where each edge has a weight associated with it. Depending on the context, the edge weight may represent different concepts like “distance”, “traffic”, “cost”, “resistance” and so on. So, it has two kind: Dericted Weighted Graphs and Undericted Weighted Graphs
 
-
 ////// Undericted Graphs //////
 class Graph {
   constructor() {
@@ -21,9 +20,19 @@ class Graph {
   }
 
   //this for make edge or connection and this is Graph Undericted Graph
-  addEdge(v1, v2) {
-    this.adjacencyList[v1].push(v2);
-    this.adjacencyList[v2].push(v1);
+  addEdge(vertex1, vertex2) {
+    this.adjacencyList[vertex1].push(vertex2);
+    this.adjacencyList[vertex2].push(vertex1);
+  }
+
+  //this for remove edge or connection and this is Graph Undericted Graph
+  removeEdge(vertex1, vertex2) {
+    this.adjacencyList[vertex1] = this.adjacencyList[vertex1].filter(
+      (vertex) => vertex !== vertex2
+    );
+    this.adjacencyList[vertex2] = this.adjacencyList[vertex2].filter(
+      (vertex) => vertex !== vertex1
+    );
   }
 }
 
@@ -33,4 +42,6 @@ console.log(graph.addVertex("Dallas"));
 console.log(graph.addVertex("Aspen"));
 console.log(graph.addEdge("Dallas", "Tokyo"));
 console.log(graph.addEdge("Dallas", "Aspen"));
+console.log(graph);
+console.log(graph.removeEdge("Dallas", "Aspen"));
 console.log(graph);
