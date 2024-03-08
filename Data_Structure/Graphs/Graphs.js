@@ -14,7 +14,7 @@ class Graph {
     this.adjacencyList = {};
   }
 
-  //this for ading vertex/node/point
+  //this for adding vertex/node/point
   addVertex(vertex) {
     if (!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
   }
@@ -34,6 +34,17 @@ class Graph {
       (vertex) => vertex !== vertex1
     );
   }
+
+  //this for remove vertex and edges
+  removeVertex(vertex) {
+    //this for remove all edges
+    while (this.adjacencyList[vertex].length) {
+      const adjacencyVertex = this.adjacencyList[vertex].pop();
+      this.removeEdge(vertex, adjacencyVertex);
+    }
+
+    delete this.adjacencyList[vertex];
+  }
 }
 
 const graph = new Graph();
@@ -43,5 +54,6 @@ console.log(graph.addVertex("Aspen"));
 console.log(graph.addEdge("Dallas", "Tokyo"));
 console.log(graph.addEdge("Dallas", "Aspen"));
 console.log(graph);
-console.log(graph.removeEdge("Dallas", "Aspen"));
+// console.log(graph.removeEdge("Dallas", "Aspen"));
+console.log(graph.removeVertex("Tokyo"));
 console.log(graph);
