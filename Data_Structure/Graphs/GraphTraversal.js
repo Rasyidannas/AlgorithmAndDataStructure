@@ -82,7 +82,31 @@ class Graph {
 
     return result;
   }
-}
+  
+  //Breadth FIrst visit neighbors at current depth first!
+  //Breadth First Search is an algorithm for traversing or searching tree or graph data structure. it start at some arbitrary vertex of a graph, and explores all of the neighbor vertices at the present depth prior to moving on to the nodes at the next depth level.
+  breadthFirst(start){
+        const queue = [start];
+        const result = [];
+        const visited = {};
+        let currentVertex;
+        visited[start] = true;
+
+        while(queue.length){
+            currentVertex = queue.shift();
+            result.push(currentVertex);
+           
+
+            this.adjacencyList[currentVertex].forEach(neighbor => {
+                if(!visited[neighbor]){
+                    visited[neighbor] = true;
+                    queue.push(neighbor);
+                }
+            });
+        }
+        return result;
+  }
+} 
 
 let g = new Graph();
 
@@ -102,7 +126,8 @@ g.addEdge("D","E")
 g.addEdge("D","F")
 g.addEdge("E","F")
 //console.log(g.depthFirstRecursive("A"))
-console.log(g.depthFirstIterative("A"))
+//console.log(g.depthFirstIterative("A"))
+console.log(g.breadthFirst("A"))
 
 //          A
 //        /   \
